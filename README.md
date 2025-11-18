@@ -99,3 +99,31 @@ npm run start-ui
 ```
 
 UI runs on `http://localhost:7860`
+
+## Models Supported
+
+The RAG system supports multiple LLM models for generating responses. Models are selected via the `/rag/response` endpoint using the `llmModel` parameter.
+
+### Local Models (via Ollama)
+
+These models run locally using [Ollama](https://ollama.ai/). Ensure Ollama is running on `localhost:11434`.
+
+| Model Name        | API Parameter | Description                              | Use Case                              |
+| ----------------- | ------------- | ---------------------------------------- | ------------------------------------- |
+| **Llama 3.1**     | `llama3.1`    | Meta's latest large language model       | General purpose, high quality         |
+| **Llama 3.2**     | `llama3.2`    | Newer version of Llama                   | Latest features, improved performance |
+| **GPT-OSS 20B**   | `gpt-oss:20b` | Open-source GPT variant (20B parameters) | Large context, complex reasoning      |
+| **Gemma 3 (4B)**  | `gemma3-4`    | Google's Gemma model (4B parameters)     | Fast, efficient for simple queries    |
+| **Gemma 3 (12B)** | `gemma3-12`   | Larger Gemma variant                     | Better quality, more compute          |
+| **Qwen 3**        | `qwen3`       | Alibaba's Qwen model                     | Multilingual support                  |
+
+### Online Models (via OpenAI API)
+
+These models require an OpenAI API key set in the `OPENAI_API_KEY` environment variable.
+
+| Model Name      | API Parameter | Description            | Temperature  | Use Case                  |
+| --------------- | ------------- | ---------------------- | ------------ | ------------------------- |
+| **GPT-5**       | `gpt-5`       | Latest GPT-5 model     | 1.0 (fixed)  | Highest quality responses |
+| **GPT-5 Mini**  | `gpt-5-mini`  | Smaller GPT-5 variant  | 1.0 (fixed)  | Fast, cost-effective      |
+| **GPT-5 Nano**  | `gpt-5-nano`  | Smallest GPT-5 variant | 1.0 (fixed)  | Ultra-fast, minimal cost  |
+| **GPT-4o Mini** | `gpt-4o-mini` | GPT-4 optimized mini   | Random [0,1] | Balanced performance      |
