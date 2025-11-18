@@ -1,0 +1,5 @@
+marker-pdf[full]
+PyPDF2
+pdfplumber
+markitdown[all]
+docling

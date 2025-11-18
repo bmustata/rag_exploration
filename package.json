@@ -1,0 +1,34 @@
+{
+  "name": "rag_exploration",
+  "version": "1.0.0",
+  "description": "Experiments and e2e performance for RAG (Retrieval-Augmented Generation)",
+  "main": "index.js",
+  "scripts": {
+    "start-server": "node server-core-llamaindex/core_server.js"
+  },
+  "dependencies": {
+    "@elastic/elasticsearch": "^9.2.0",
+    "@llamaindex/ollama": "^0.1.23",
+    "@llamaindex/openai": "^0.4.21",
+    "@llamaindex/qdrant": "^0.1.32",
+    "@qdrant/js-client-rest": "^1.15.1",
+    "axios": "^1.13.2",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "llamaindex": "^0.12.0",
+    "lts": "^2.0.0",
+    "ollama": "^0.6.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bmustata/rag_exploration.git"
+  },
+  "type": "module",
+  "author": "Bogdan M",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bmustata/rag_exploration/issues"
+  },
+  "homepage": "https://github.com/bmustata/rag_exploration#readme"
+}
