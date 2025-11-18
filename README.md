@@ -108,14 +108,14 @@ The RAG system supports multiple LLM models for generating responses. Models are
 
 These models run locally using [Ollama](https://ollama.ai/). Ensure Ollama is running on `localhost:11434`.
 
-| Model Name        | API Parameter | Description                              | Use Case                              |
-| ----------------- | ------------- | ---------------------------------------- | ------------------------------------- |
-| **Llama 3.1**     | `llama3.1`    | Meta's latest large language model       | General purpose, high quality         |
-| **Llama 3.2**     | `llama3.2`    | Newer version of Llama                   | Latest features, improved performance |
-| **GPT-OSS 20B**   | `gpt-oss:20b` | Open-source GPT variant (20B parameters) | Large context, complex reasoning      |
-| **Gemma 3 (4B)**  | `gemma3-4`    | Google's Gemma model (4B parameters)     | Fast, efficient for simple queries    |
-| **Gemma 3 (12B)** | `gemma3-12`   | Larger Gemma variant                     | Better quality, more compute          |
-| **Qwen 3**        | `qwen3`       | Alibaba's Qwen model                     | Multilingual support                  |
+| Model Name        | Size | API Parameter | Description                              | Use Case                              |
+| ----------------- | ---- | ------------- | ---------------------------------------- | ------------------------------------- |
+| **Llama 3.1**     | 8B   | `llama3.1`    | Meta's latest large language model       | General purpose, high quality         |
+| **Llama 3.2**     | 3B   | `llama3.2`    | Newer version of Llama                   | Latest features, improved performance |
+| **GPT-OSS 20B**   | 20B  | `gpt-oss:20b` | Open-source GPT variant (20B parameters) | Large context, complex reasoning      |
+| **Gemma 3 (4B)**  | 4B   | `gemma3-4`    | Google's Gemma model (4B parameters)     | Fast, efficient for simple queries    |
+| **Gemma 3 (12B)** | 12B  | `gemma3-12`   | Larger Gemma variant                     | Better quality, more compute          |
+| **Qwen 3**        | 8B   | `qwen3`       | Alibaba's Qwen model                     | Multilingual support                  |
 
 ### Online Models (via OpenAI API)
 
