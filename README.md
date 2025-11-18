@@ -117,6 +117,17 @@ These models run locally using [Ollama](https://ollama.ai/). Ensure Ollama is ru
 | **Gemma 3 (12B)** | 12B  | `gemma3-12`   | Larger Gemma variant                     | Better quality, more compute          |
 | **Qwen 3**        | 8B   | `qwen3`       | Alibaba's Qwen model                     | Multilingual support                  |
 
+### Embedding Models
+
+The RAG system uses embedding models to convert text into vector representations for semantic search. These models run locally via Ollama.
+
+| Model Name           | Size | API Parameter      | Description                          | Use Case                     |
+| -------------------- | ---- | ------------------ | ------------------------------------ | ---------------------------- |
+| **Embedding Gemma**  | 2B   | `embeddinggemma`   | Google's specialized embedding model | Default, optimized for RAG   |
+| **Nomic Embed Text** | 1.4B | `nomic-embed-text` | Nomic AI's text embedding model      | Alternative, general purpose |
+
+All vector operations (indexing and search) use the same embedding model to ensure consistency.
+
 ### Online Models (via OpenAI API)
 
 These models require an OpenAI API key set in the `OPENAI_API_KEY` environment variable.
