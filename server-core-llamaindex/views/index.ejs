@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Search API</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .endpoint {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #667eea;
+        }
+        .endpoint h2 {
+            margin-top: 0;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .method {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .method.get {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .method.post {
+            background-color: #2196F3;
+            color: white;
+        }
+        .description {
+            color: #666;
+            font-size: 1.1em;
+            margin: 15px 0;
+        }
+        .parameters {
+            margin-top: 20px;
+        }
+        .parameters h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .parameter {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        .parameter-name {
+            font-weight: bold;
+            color: #495057;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        }
+        .parameter-type {
+            color: #6f42c1;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+        .parameter-required {
+            color: #dc3545;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .parameter-optional {
+            color: #28a745;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .example {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+        .example h4 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        .example code {
+            background-color: #e9ecef;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📚 RAG Search API</h1>
+        <p>Retrieval-Augmented Generation knowledge base search system</p>
+    </div>
+
+    <% endpoints.forEach(function(endpoint) { %>
+        <div class="endpoint">
+            <h2>
+                <span class="method <%= endpoint.method.toLowerCase() %>"><%= endpoint.method %></span>
+                <code><%= endpoint.path %></code>
+            </h2>
+            
+            <div class="description">
+                <%= endpoint.description %>
+            </div>
+
+            <% if (endpoint.parameters && endpoint.parameters.length > 0) { %>
+                <div class="parameters">
+                    <h3>Parameters:</h3>
+                    <% endpoint.parameters.forEach(function(param) { %>
+                        <div class="parameter">
+                            <div class="parameter-name">
+                                <%= param.name %>
+                                <span class="parameter-type">(<%= param.type %>)</span>
+                                <span class="<%= param.required ? 'parameter-required' : 'parameter-optional' %>">
+                                    <%= param.required ? 'Required' : 'Optional' %>
+                                </span>
+                            </div>
+                            <div><%= param.description %></div>
+                        </div>
+                    <% }); %>
+                </div>
+            <% } %>
+
+            <div class="example">
+                <h4>Example Usage:</h4>
+                <% if (endpoint.method === 'GET') { %>
+                    <% if (endpoint.parameters && endpoint.parameters.length > 0) { %>
+                        <code>GET <%= serverUrl %><%= endpoint.path %>?<%= endpoint.parameters[0].name %>=example</code>
+                    <% } else { %>
+                        <code>GET <%= serverUrl %><%= endpoint.path %></code>
+                    <% } %>
+                <% } else { %>
+                    <code>POST <%= serverUrl %><%= endpoint.path %></code>
+                <% } %>
+            </div>
+        </div>
+    <% }); %>
+
+    <div class="footer">
+        <p>Server running on <strong><%= serverUrl %></strong></p>
+        <p>📖 Access this documentation anytime at the root endpoint</p>
+    </div>
+</body>
+</html>

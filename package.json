@@ -4,7 +4,8 @@
   "description": "Experiments and e2e performance for RAG (Retrieval-Augmented Generation)",
   "main": "index.js",
   "scripts": {
-    "start-server": "node server-core-llamaindex/core_server.js"
+    "start-server": "node server-core-llamaindex/core_server.js",
+    "start-ui": "gradio ui-rag-explorer/rag-explorer-app.py"
   },
   "dependencies": {
     "@elastic/elasticsearch": "^9.2.0",
