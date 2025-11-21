@@ -1,0 +1,85 @@
+# Project: rag_exploration
+
+## Overview
+This project is an end-to-end RAG (Retrieval-Augmented Generation) system. It consists of a knowledge processing pipeline, a Node.js/Express backend server using LlamaIndex, and a Python/Gradio frontend UI.
+
+## Architecture
+
+### 1. Knowledge Processing (`knowledge/`)
+- **Goal:** Convert PDF documentation into chunked Markdown for indexing.
+- **Pipeline:**
+  1. `step1-download_pdf.sh`: Downloads source PDF.
+  2. `step2-convert_pdf_to_chapters.py`: Extracts chapters using `pdfplumber`.
+  3. `step3-convert_chapters_to_md.sh`: Converts chapters to Markdown using `docling`.
+- **Output:** Markdown files stored in `knowledge/<topic>/chapters/`.
+
+### 2. RAG Server (`server-core-llamaindex/`)
+- **Tech Stack:** Node.js, Express, LlamaIndex (TS/JS), Qdrant (Vector DB), Elasticsearch (Keyword Search).
+- **Key Files:**
+  - `core_server.js`: Main entry point.
+  - `lib/rag.js`: Handles vector embeddings, Qdrant interaction, and LLM response generation.
+  - `lib/elasticsearch.js`: Handles keyword and fuzzy search.
+- **Models:**
+  - **Local (Ollama):** llama3.1, llama3.2, gpt-oss:20b, gemma3, qwen3.
+  - **Embeddings:** embeddinggemma (default), nomic-embed-text.
+  - **Cloud (OpenAI):** gpt-5, gpt-5-mini, gpt-4o-mini.
+
+### 3. UI Explorer (`ui-rag-explorer/`)
+- **Tech Stack:** Python, Gradio.
+- **Features:**
+  - Elasticsearch tab (Keyword/Fuzzy search).
+  - RAG Vector Search tab (Semantic search).
+  - RAG LLM Response tab (Q&A with source attribution).
+
+## API Endpoints (Port 4000)
+
+| Method | Endpoint | Description | Params |
+|--------|----------|-------------|--------|
+| GET | `/search` | Exact keyword search | `q` |
+| GET | `/search_fuzz` | Fuzzy keyword search | `q` |
+| GET | `/rag/search` | Vector similarity search | `q`, `topK` |
+| GET | `/rag/response` | RAG-based LLM generation | `q`, `topK`, `llmModel` |
+| POST | `/update` | Reindex Elasticsearch | - |
+| POST | `/rag/update` | Reindex Qdrant Vector DB | - |
+| GET | `/koDir` | Get current knowledge dir | - |
+
+## Setup & Commands
+
+### Prerequisites
+- Node.js (v20+)
+- Python (v3.10+)
+- Podman/Docker (for Qdrant & Elasticsearch containers)
+- Ollama (running locally on port 11434)
+
+### Infrastructure
+```bash
+./start_elastic.sh  # Starts Elasticsearch on port 9200
+./start_qdrant.sh   # Starts Qdrant on port 6333
+```
+
+### Server
+```bash
+npm install
+npm run start-server
+# Runs on http://localhost:4000
+```
+
+### UI
+```bash
+cd ui-rag-explorer
+pip install -r requirements.txt
+cd ..
+npm run start-ui
+# Runs on http://localhost:7860
+```
+
+## AI-Friendly
+
+This project explicitly provides context for AI and LLM agents via [`llms.txt`](llms.txt), enabling its architecture and usage to be easily understood and indexed.
+
+## Get in Touch
+
+Have questions, suggestions, or want to collaborate? Feel free to reach out!
+
+**Mustata Bogdan**
+📧 bmustata [at] yahoo.com

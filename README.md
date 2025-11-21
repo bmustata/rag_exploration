@@ -138,3 +138,14 @@ These models require an OpenAI API key set in the `OPENAI_API_KEY` environment v
 | **GPT-5 Mini**  | `gpt-5-mini`  | Smaller GPT-5 variant  | 1.0 (fixed)  | Fast, cost-effective      |
 | **GPT-5 Nano**  | `gpt-5-nano`  | Smallest GPT-5 variant | 1.0 (fixed)  | Ultra-fast, minimal cost  |
 | **GPT-4o Mini** | `gpt-4o-mini` | GPT-4 optimized mini   | Random [0,1] | Balanced performance      |
+
+## AI-Friendly
+
+This project explicitly provides context for AI and LLM agents via [`llms.txt`](llms.txt), enabling its architecture and usage to be easily understood and indexed.
+
+## Get in Touch
+
+Have questions, suggestions, or want to collaborate? Feel free to reach out!
+
+**Mustata Bogdan**
+📧 bmustata [at] yahoo.com
