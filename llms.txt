@@ -73,6 +73,20 @@ npm run start-ui
 # Runs on http://localhost:7860
 ```
 
+## Screenshots
+
+### Screenshot 1: Elasticsearch Traditional Search
+![Elasticsearch Search](presentations/screenshots/rag_screenshot_1.png)
+Traditional keyword-based search using Elasticsearch with support for both normal and fuzzy matching, returning documents with scoring and full content display.
+
+### Screenshot 2: RAG Vector Similarity Search
+![RAG Vector Search](presentations/screenshots/rag_screenshot_2.png)
+Semantic search using vector embeddings to find contextually similar content, displaying the most relevant documents with similarity scores.
+
+### Screenshot 3: RAG LLM Response Generation
+![RAG LLM Response](presentations/screenshots/rag_screenshot_3.png)
+AI-powered question answering with full context attribution, using LLM models to generate comprehensive responses complete with source documents and relevance scores.
+
 ## AI-Friendly
 
 This project explicitly provides context for AI and LLM agents via [`llms.txt`](llms.txt), enabling its architecture and usage to be easily understood and indexed.
