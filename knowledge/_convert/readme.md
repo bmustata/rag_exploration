@@ -168,7 +168,3 @@ For all options:
 ```bash
 docling --help
 ```
-
-```
-
-```
